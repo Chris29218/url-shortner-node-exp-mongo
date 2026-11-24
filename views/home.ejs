@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1e293b;
+    padding: 30px 20px 40px;
+}
+
+/* Top bar and Logout */
+.top-bar {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-bar form {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.logout-btn {
+    display: inline-block;
+    width: auto;
+    min-width: 120px;
+    padding: 10px 20px;
+    background: #ef4444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #2563eb;
+    margin-bottom: 30px;
+}
+
+/* Generated URL message */
+p {
+    max-width: 750px;
+    margin: 0 auto 20px;
+    padding: 14px 18px;
+    background: #dcfce7;
+    color: #166534;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+/* URL form */
+form {
+    max-width: 750px;
+    margin: 0 auto 35px;
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* URL table */
+table {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+th,
+td {
+    padding: 15px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    overflow-wrap: anywhere;
+}
+
+th {
+    background: #1e293b;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 650px) {
+    body {
+        padding: 20px 12px 30px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    form {
+        padding: 18px;
+    }
+
+    table {
+        font-size: 0.8rem;
+    }
+
+    th,
+    td {
+        padding: 10px 7px;
+    }
+
+    .logout-btn {
+        padding: 9px 15px;
+    }
+}
+    </style>
+    <title>URL Shortener</title>
+</head>
+
+<body>
+    <nav class="top-bar" aria-label="Main navigation">
+        <form action="/api/users/logout" method="post">
+            <button class="logout-btn">Logout</button>
+        </form>
+    </nav>
+
+    <h1>URL Shortener</h1>
+
+    <% if (locals.shortURL) { %>
+        <p>URL generated: <%= shortURL %>
+        </p>
+        <% } %>
+
+            <form action="/api/url" method="POST">
+                <label>Enter long URL</label>
+                <input type="text" name="url" placeholder="www.example.com" required>
+                <button type="submit">Shorten</button>
+            </form>
+
+            <% if (locals.allURLs && locals.allURLs.length> 0) { %>
+                <table>
+                    <tr>
+                        <th>NO.</th>
+                        <th>Short URL</th>
+                        <th>Base URL</th>
+                        <th>Total Clicks</th>
+                    </tr>
+
+                    <!-- Render all URLs -->
+                    <% allURLs.forEach((url, index)=> { %>
+                        <tr>
+                            <td>
+                                <%= index + 1 %>
+                            </td>
+                            <td>
+                                <%= url.shortId %>
+                            </td>
+                            <td>
+                                <%= url.redirectURL %>
+                            </td>
+                            <td>
+                                <%= url.visitHistory.length %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </table>
+                <% } %>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      :root {
+        font-family: system-ui, sans-serif;
+        color: #1f2937;
+        background: #f8fafc;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .app-shell {
+        min-height: 100vh;
+      }
+
+      .app-header {
+        display: flex;
+        min-height: 64px;
+        align-items: center;
+        padding: 0 24px;
+        border-bottom: 1px solid #e5e7eb;
+        background: #fff;
+      }
+
+      .app-brand {
+        color: inherit;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .app-content {
+        width: min(100% - 32px, 960px);
+        margin: 64px auto;
+      }
+
+      .app-content h1 {
+        margin: 0 0 8px;
+        font-size: clamp(28px, 5vw, 40px);
+      }
+
+      .app-content p {
+        margin: 0;
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <a href="/" class="app-brand">My App</a>
+      </header>
+      <main class="app-content">
+        <h1>Welcome to My App</h1>
+        <p>This is the home page of the application.</p>
+      </main>
+    </div>  
+  </body>
+</html>
