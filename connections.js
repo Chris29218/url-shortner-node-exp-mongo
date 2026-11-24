@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // mongoose connection
 async function connectDB() {
   try {
-    await mongoose.connect("mongodb://localhost:27017/url-shortner-1");
+    await mongoose.connect(process.env.MongoDB_URI);
     console.log("MongoDB connected");
   } catch (err) {
     console.error("MongoDB connection error:", err);

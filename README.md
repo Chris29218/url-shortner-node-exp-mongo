@@ -1,4 +1,4 @@
-A Fully Secured URL Shortner App which supports multi-device login.
+A secured URL Shortner App made using Mongo, Express, EJS & Nodejs which supports multi-device login.
 
 App url - hosting inactive due to some price related issues.
 
