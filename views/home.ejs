@@ -25,6 +25,7 @@ body {
     margin: 0 auto 20px;
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
 }
 
 .top-bar form {
@@ -51,6 +52,15 @@ body {
 
 .logout-btn:hover {
     background: #dc2626;
+    transform: translateY(-1px);
+}
+
+.logout-all-btn {
+    background: #7c3aed;
+}
+
+.logout-all-btn:hover {
+    background: #6d28d9;
     transform: translateY(-1px);
 }
 
@@ -191,6 +201,9 @@ tr:last-child td {
     <nav class="top-bar" aria-label="Main navigation">
         <form action="/api/users/logout" method="post">
             <button class="logout-btn">Logout</button>
+        </form>
+        <form action="/api/users/logout-all" method="post">
+            <button class="logout-btn logout-all-btn">Logout all devices</button>
         </form>
     </nav>
 

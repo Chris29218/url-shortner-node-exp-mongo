@@ -1,5 +1,5 @@
 import express from "express";
-import { handleUserLogin, handleUserLogout, handleUserSignUp } from "../controllers/user.js";
+import { handleLogoutAll, handleUserLogin, handleUserLogout, handleUserSignUp } from "../controllers/user.js";
 
 const router = express.Router();
 
@@ -9,5 +9,7 @@ router.route("/signup").post(handleUserSignUp);
 router.route("/login").post(handleUserLogin)
 // LOG OUT
 router.route("/logout").post(handleUserLogout)
+// LOG OUT OF EVERY DEVICE
+router.route("/logout-all").post(handleLogoutAll)
 
 export default router;
