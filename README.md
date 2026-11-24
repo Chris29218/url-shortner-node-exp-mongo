@@ -1,6 +1,6 @@
 A secured URL Shortner App made using Mongo, Express, EJS & Nodejs which supports multi-device login.
 
-App url - hosting inactive due to some price related issues.
+App url - hosting currently inactive.
 
 ## Guide for setup
 1. Add env file in project root
