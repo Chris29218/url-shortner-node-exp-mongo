@@ -1,5 +1,9 @@
 import jwt from "jsonwebtoken";
-const secret = process.env.JWT_SECRET || "Skyinfotech$$999$$";
+const secret = process.env.JWT_SECRET;
+
+if (!secret) {
+  throw new Error("JWT_SECRET is required. Add it to your .env file.");
+}
 
 function setUser(user, sessionId) {
   return jwt.sign(

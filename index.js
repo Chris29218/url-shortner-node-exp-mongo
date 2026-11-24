@@ -1,7 +1,6 @@
 // JH
+import "dotenv/config";
 import express from "express";
-// import users from "./users.json" with { type: "json" };
-// import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
 import connectDB from "./connections.js";
 import { middlewareLogger } from "./middlewares/index.js";
@@ -27,7 +26,7 @@ app.use(express.json()) // support json data
 app.use(express.urlencoded({extended : false})) // support form data
 app.use(cookieParser()); // to work with cookies
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
 app.use(middlewareLogger);
 app.use(checkForAuthentication);
