@@ -1,2 +1,11 @@
 A Fully Secured URL Shortner App which supports multi-device login.
-app url - hosting inactive due to some price related issues.
+
+App url - hosting inactive due to some price related issues.
+
+## Guide for setup
+1. Add env file in project root
+2. Add strong secret `JWT_SECRET`.
+3. Add `PORT`.
+4. Add `MongoDB_URI`.
+5. Install dependencies using  `npm i`.
+6. Start the server.
